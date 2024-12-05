@@ -61,7 +61,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!--[![Product Name Screen Shot][product-screenshot]](https://example.com)-->
 
 A couple of python scripts that allows you to create users from a csv file. I use it to download a class list form moodle and automatically generate login credentials. 
 
@@ -99,8 +99,10 @@ Don't forget to give the project a star! Thanks again!
 ### Top contributors:
 
 <a href="https://github.com/jrjdavidson/webODM-account-manager/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=jrjdavidson/webODM-account-manager" alt="contrib.rocks image" />
+  <img src="https://contrib.rocks/image?repo=jrjdavidson/webODM-account-manager" />
 </a>
+
+Made with [contrib.rocks](https://contrib.rocks).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

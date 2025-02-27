@@ -24,7 +24,9 @@ def main():
         if len(matching_groups) == 0:
 
             logging.info('Creating Group with default permissions')
-            default_group = next((g for g in results if g['name'] == 'Default'), None) # just get the first matching group
+            # just get the first matching group
+            default_group = next(
+                (g for g in results if g['name'] == 'Default'), None)
 
             group_data = {
                 "name": args.group_name,
@@ -39,13 +41,15 @@ def main():
 
                 group_id = response.json()['id']
             else:
-                logging.error(f"Failed to create group: {response}, {response.json()}")
+                logging.error(
+                    f"Failed to create group: {response}, {response.json()}")
                 return
 
         elif len(matching_groups) == 1:
             group_id = matching_groups[0]['id']
         else:
-            logging.error(f"Failed to get group as more than 1 group matches: {matching_groups}")
+            logging.error(
+                f"Failed to get group as more than 1 group matches: {matching_groups}")
             return
 
         # Open the CSV file
@@ -63,7 +67,8 @@ def main():
 
                 # Define the data for the new user
                 user_data = {
-                    "username": email.split("@")[0],  # Use the part before the "@" in the email as the username
+                    # Use the part before the "@" in the email as the username
+                    "username": email.split("@")[0],
                     "password": password,  # Use a default password - user id
                     "email": email,
                     "groups": [group_id],
@@ -82,9 +87,11 @@ def main():
                 # Check if the request was successful
 
                 if response.status_code == 201:
-                    logging.info(f"Successfully created user {user_data['username']} with password: {user_data['password']}.")
+                    logging.info(
+                        f"Successfully created user {user_data['username']} with password: {user_data['password']}.")
                 else:
-                    logging.error(f"Failed to create user {user_data['username']} with pass: {user_data['password']}.")
+                    logging.error(
+                        f"Failed to create user {user_data['username']} with pass: {user_data['password']}.")
                     logging.error(response)
                     logging.error(response.json())
 
@@ -92,14 +99,20 @@ def main():
 if __name__ == "__main__":
     # Define the URL of your WebODM instance
     # Set up logging
-    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(level=logging.INFO,
+                        format='%(asctime)s - %(levelname)s - %(message)s')
 
     # Set up argument parsing
-    parser = argparse.ArgumentParser(description='Create WebODM accounts from a CSV file.')
-    parser.add_argument('--admin_username', required=True, help='The admin username')
-    parser.add_argument('--csv_file_path', required=True, help='The path to the CSV file')
-    parser.add_argument('--group_name', required=True, type=str, help='The Name of the group to add the users to')
-    parser.add_argument('--webodm_url', required=True, type=str, help='url to your inbsance of WebODM. eg. "http://132.181.102.65:8000/" ')
+    parser = argparse.ArgumentParser(
+        description='Create WebODM accounts from a CSV file.')
+    parser.add_argument('--admin_username', required=True,
+                        help='The admin username')
+    parser.add_argument('--csv_file_path', required=True,
+                        help='The path to the CSV file')
+    parser.add_argument('--group_name', required=True, type=str,
+                        help='The Name of the group to add the users to')
+    parser.add_argument('--webodm_url', required=True, type=str,
+                        help='url to your instance of WebODM. eg. "http://132.181.102.65:8000/" ')
 
     # Parse the arguments
     args = parser.parse_args()
@@ -121,6 +134,6 @@ if __name__ == "__main__":
         main()
 
     else:
-        logging.error(f"Failed to authenticate")
+        logging.error("Failed to authenticate")
 
     logging.info("Script ended.")

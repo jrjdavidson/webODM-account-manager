@@ -70,9 +70,9 @@ A couple of python scripts that allows you to create users from a csv file. I us
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-Clone the repo. Install any dependencies (so far only `requests`) Run the script and add any arguments. For example
+Clone the repo. Install any dependencies (so far only `requests`). I recommend using uv. Run the script and add any arguments. For example
 ```
-py addUsers.py src/addUsers.py --admin_username adminuser --csv_file_path "testData/test.csv" --group_name SEE395_2024 --webodm_url "http://132.181.102.65:8000/"  
+uv run addUsers.py src/addUsers.py --admin_username adminuser --csv_file_path "testData/test.csv" --group_name SEE395_2024 --webodm_url "http://132.181.102.65:8000/"  
 ```
 
 

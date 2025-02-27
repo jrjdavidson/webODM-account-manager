@@ -64,7 +64,7 @@ if __name__ == "__main__":
     parser.add_argument('--group_name', required=True, type=str,
                         help='The Name of the group to add the users to')
     parser.add_argument('--webodm_url', required=True, type=str,
-                        help='url to your inbsance of WebODM. eg. "http://132.181.102.65:8000/" ')
+                        help='url to your instance of WebODM. eg. "http://132.181.102.65:8000/" ')
 
     # Parse the arguments
     args = parser.parse_args()
